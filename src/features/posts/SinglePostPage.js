@@ -1,7 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-
 import { Link } from 'react-router-dom'
+
+import { PostAuthor } from './postauthor'
+import { TimeAgo } from './TimeAgo'
+import { ReactionButtons } from './ReactionButtons'
 
 export const SinglePostPage = ({ match }) => {
   const { postId } = match.params
@@ -20,13 +23,18 @@ export const SinglePostPage = ({ match }) => {
 
   return (
     <section>
-      <article>
-        <h2>{post.title}</h2>
-        <p>{post.content}</p>
-        <Link to={`/editPost/${post.id}`} className="button">
-          Edit Post
-        </Link>
-      </article>
-    </section>
+    <article className="post">
+      <h2>{post.title}</h2>
+      <div>
+        <PostAuthor userId={post.user} />
+        <TimeAgo timestamp={post.date} />
+      </div>
+      <p className="post-content">{post.content}</p>
+      <ReactionButtons post={post} />
+      <Link to={`/editPost/${post.id}`} className="button">
+        Edit Post
+      </Link>
+    </article>
+  </section>
   )
 }
