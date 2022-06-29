@@ -10,7 +10,9 @@ export const Navbar = () => {
 
         <div className="navContent">
           <div className="navLinks">
-            <Link to="/">Posts</Link>
+            <Link to="/">Home</Link>
+            <Link to="/postList">Posts</Link>
+            <Link to="/userList">Author</Link>
           </div>
         </div>
       </section>
